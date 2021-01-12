@@ -1,4 +1,4 @@
-process.env.ethTest = 'TrieTests'
+process.env.vapTest = 'TrieTests'
 
 module.exports = function (config) {
   config.set({

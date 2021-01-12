@@ -4,7 +4,7 @@ const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
 const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const vapUtil = require('vaporyjs-util')
 const semaphore = require('semaphore')
 const TrieNode = require('./trieNode')
 const ReadStream = require('./readStream')
@@ -16,7 +16,7 @@ const asyncFirstSeries = require('./util').asyncFirstSeries
 module.exports = Trie
 
 /**
- * Use `require('merkel-patricia-tree')` for the base interface. In Ethereum applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+ * Use `require('merkel-patricia-tree')` for the base interface. In Vapory applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
  * @class Trie
  * @param {Object} [db] An instance of [levelup](https://github.com/rvagg/node-levelup/) or a compatible API. If the db is `null` or left undefined, then the trie will be stored in memory via [memdown](https://github.com/rvagg/memdown)
  * @param {Buffer|String} [root]` A hex `String` or `Buffer` for the root of a previously stored trie
@@ -26,7 +26,7 @@ module.exports = Trie
  */
 function Trie (db, root) {
   var self = this
-  this.EMPTY_TRIE_ROOT = ethUtil.SHA3_RLP
+  this.EMPTY_TRIE_ROOT = vapUtil.SHA3_RLP
   this.sem = semaphore(1)
 
   // setup dbs
@@ -41,7 +41,7 @@ function Trie (db, root) {
   Object.defineProperty(this, 'root', {
     set: function (value) {
       if (value) {
-        value = ethUtil.toBuffer(value)
+        value = vapUtil.toBuffer(value)
         assert(value.length === 32, 'Invalid root length. Roots are 32 bytes')
       } else {
         value = self.EMPTY_TRIE_ROOT
@@ -66,7 +66,7 @@ function Trie (db, root) {
 Trie.prototype.get = function (key, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
+  key = vapUtil.toBuffer(key)
 
   self._findPath(key, function (err, node, remainder, stack) {
     var value = null
@@ -88,8 +88,8 @@ Trie.prototype.get = function (key, cb) {
 Trie.prototype.put = function (key, value, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
-  value = ethUtil.toBuffer(value)
+  key = vapUtil.toBuffer(key)
+  value = vapUtil.toBuffer(value)
 
   if (!value || value.toString() === '') {
     self.del(key, cb)
@@ -97,7 +97,7 @@ Trie.prototype.put = function (key, value, cb) {
     cb = callTogether(cb, self.sem.leave)
 
     self.sem.take(function () {
-      if (self.root.toString('hex') !== ethUtil.SHA3_RLP.toString('hex')) {
+      if (self.root.toString('hex') !== vapUtil.SHA3_RLP.toString('hex')) {
         // first try to find the give key or its nearst node
         self._findPath(key, function (err, foundValue, keyRemainder, stack) {
           if (err) {
@@ -122,7 +122,7 @@ Trie.prototype.put = function (key, value, cb) {
 Trie.prototype.del = function (key, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
+  key = vapUtil.toBuffer(key)
   cb = callTogether(cb, self.sem.leave)
 
   self.sem.take(function () {
@@ -146,7 +146,7 @@ Trie.prototype.del = function (key, cb) {
  * @param {Function} callback A callback `Function`, which is given the arguments `err` - for errors that may have occured and `value` - the found value in a `Buffer` or if no value was found `null`.
  */
 Trie.prototype.getRaw = function (key, cb) {
-  key = ethUtil.toBuffer(key)
+  key = vapUtil.toBuffer(key)
 
   function dbGet (db, cb2) {
     db.get(key, {
@@ -431,7 +431,7 @@ Trie.prototype._walkTrie = function (root, onNode, onDone) {
   var aborted = false
   var returnValues = []
 
-  if (root.toString('hex') === ethUtil.SHA3_RLP.toString('hex')) {
+  if (root.toString('hex') === vapUtil.SHA3_RLP.toString('hex')) {
     return onDone()
   }
 
@@ -728,13 +728,13 @@ Trie.prototype.batch = function (ops, cb) {
  * @param {Function} cb
  */
 Trie.prototype.checkRoot = function (root, cb) {
-  root = ethUtil.toBuffer(root)
+  root = vapUtil.toBuffer(root)
   this._lookupNode(root, function (value) {
     cb(null, !!value)
   })
 }
 
-},{"./readStream":207,"./trieNode":208,"./util":209,"assert":24,"async":25,"ethereumjs-util":97,"levelup":133,"memdown":138,"rlp":172,"semaphore":189}],2:[function(require,module,exports){
+},{"./readStream":207,"./trieNode":208,"./util":209,"assert":24,"async":25,"vaporyjs-util":97,"levelup":133,"memdown":138,"rlp":172,"semaphore":189}],2:[function(require,module,exports){
 const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
@@ -17915,7 +17915,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.0.2",
-      "/home/null/code/merkle-patricia-tree/node_modules/ethereumjs-util"
+      "/home/null/code/merkle-patricia-tree/node_modules/vaporyjs-util"
     ]
   ],
   "_from": "elliptic@>=6.0.2 <7.0.0",
@@ -17941,13 +17941,13 @@ module.exports={
   "_requiredBy": [
     "/browserify-sign",
     "/create-ecdh",
-    "/ethereumjs-util"
+    "/vaporyjs-util"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.0.2.tgz",
   "_shasum": "219b96cd92aa9885d91d31c1fd42eaa5eb4483a9",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.2",
-  "_where": "/home/null/code/merkle-patricia-tree/node_modules/ethereumjs-util",
+  "_where": "/home/null/code/merkle-patricia-tree/node_modules/vaporyjs-util",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -18739,7 +18739,7 @@ exports.rlphash = function (a) {
 }
 
 /**
- * Returns the ethereum address of a given public key
+ * Returns the vapory address of a given public key
  * @method pubToAddress
  * @param {Buffer}
  * @return {Buffer}
@@ -18752,7 +18752,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey) {
 }
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the vapory public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey
  * @return {Buffer}
@@ -18764,7 +18764,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the vapory address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey
  * @return {Buffer}
@@ -30151,7 +30151,7 @@ module.exports = ripemd160
 (function (Buffer){
 const assert = require('assert')
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -30195,7 +30195,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/
@@ -38804,7 +38804,7 @@ TrieReadStream.prototype._read = function () {
 },{"./trieNode":208,"readable-stream":168,"util":203}],208:[function(require,module,exports){
 (function (Buffer){
 const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const vapUtil = require('vaporyjs-util')
 
 module.exports = TrieNode
 
@@ -38917,7 +38917,7 @@ TrieNode.prototype.serialize = function () {
 }
 
 TrieNode.prototype.hash = function () {
-  return ethUtil.sha3(this.serialize())
+  return vapUtil.sha3(this.serialize())
 }
 
 TrieNode.prototype.toString = function () {
@@ -39060,7 +39060,7 @@ function isRawNode (node) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":55,"ethereumjs-util":97,"rlp":172}],209:[function(require,module,exports){
+},{"buffer":55,"vaporyjs-util":97,"rlp":172}],209:[function(require,module,exports){
 (function (process){
 const async = require('async')
 

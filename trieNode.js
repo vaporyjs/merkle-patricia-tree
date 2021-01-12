@@ -1,5 +1,5 @@
 const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const vapUtil = require('vaporyjs-util')
 
 module.exports = TrieNode
 
@@ -112,7 +112,7 @@ TrieNode.prototype.serialize = function () {
 }
 
 TrieNode.prototype.hash = function () {
-  return ethUtil.sha3(this.serialize())
+  return vapUtil.sha3(this.serialize())
 }
 
 TrieNode.prototype.toString = function () {

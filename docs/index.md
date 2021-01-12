@@ -8,7 +8,7 @@ You can create a secure Trie where the keys are automatically hashed using **SHA
 
 [baseTrie.js:26-57](https://github.com/wanderer/merkle-patricia-tree/blob/dc436426d717fed408f4d46fed23f6d26d03d39d/baseTrie.js#L26-L57 "Source code on GitHub")
 
-Use `require('merkel-patricia-tree')` for the base interface. In Ethereum applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+Use `require('merkel-patricia-tree')` for the base interface. In Vapory applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
 
 **Parameters**
 
@@ -178,7 +178,7 @@ Static functions for creating/verifying a merkle proof.
 
 ## prove
 
-[proof.js:12-29](https://github.com/ethereumjs/merkle-patricia-tree/blob/df14ad1fbf861160abdb5954973cf4a570473ce9/proof.js#L12-L29 "Source code on GitHub")
+[proof.js:12-29](https://github.com/vaporyjs/merkle-patricia-tree/blob/df14ad1fbf861160abdb5954973cf4a570473ce9/proof.js#L12-L29 "Source code on GitHub")
 
 Returns a merkle proof for a given key
 
@@ -190,7 +190,7 @@ Returns a merkle proof for a given key
 
 ## verifyProof
 
-[proof.js:39-95](https://github.com/ethereumjs/merkle-patricia-tree/blob/df14ad1fbf861160abdb5954973cf4a570473ce9/proof.js#L39-L95 "Source code on GitHub")
+[proof.js:39-95](https://github.com/vaporyjs/merkle-patricia-tree/blob/df14ad1fbf861160abdb5954973cf4a570473ce9/proof.js#L39-L95 "Source code on GitHub")
 
 Verifies a merkle proof for a given key
 

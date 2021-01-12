@@ -1,7 +1,7 @@
-// https://github.com/ethereum/wiki/wiki/Benchmarks
+// https://github.com/vaporyco/wiki/wiki/Benchmarks
 'use strict'
 const Trie = require('../')
-const ethUtil = require('ethereumjs-util')
+const ethUtil = require('vaporyjs-util')
 const async = require('async')
 
 const ROUNDS = 1000

@@ -35,7 +35,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "async": "^1.4.2",
-    "vaporyjs-util": "^5.0.0",
+    "vaporyjs-util": "^5.1.5",
     "level-ws": "0.0.0",
     "levelup": "^1.2.1",
     "memdown": "^1.0.0",
@@ -47,7 +47,7 @@
     "browserify": "^13.0.0",
     "coveralls": "^2.11.6",
     "documentation": "^3.0.4",
-    "vaporyjs-testing": "0.0.1",
+    "vaporyjs-testing": "1.0.4",
     "istanbul": "^0.4.1",
     "karma": "^1.7.1",
     "karma-browserify": "^5.0.0",

@@ -1,8 +1,8 @@
 const Trie = require('../index.js')
 const async = require('async')
-const rlp = require('rlp')
+const rlp = require('@vaporyjs/rlp')
 const tape = require('tape')
-const ethUtil = require('ethereumjs-util')
+const ethUtil = require('vaporyjs-util')
 
 tape('simple save and retrive', function (tester) {
   var it = tester.test
@@ -297,7 +297,7 @@ tape('testing checkpoints', function (tester) {
   })
 })
 
-tape('it should create the genesis state root from ethereum', function (tester) {
+tape('it should create the genesis state root from vapory', function (tester) {
   var it = tester.test
   var trie4 = new Trie()
   var g = new Buffer('8a40bfaa73256b60764c1bf40675a99083efb075', 'hex')

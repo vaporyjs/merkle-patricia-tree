@@ -1,7 +1,7 @@
 const Trie = require('../secure.js')
 const async = require('async')
 const tape = require('tape')
-const jsonTests = require('ethereumjs-testing').tests.trieTests.trietest_secureTrie
+const jsonTests = require('vaporyjs-testing').tests.trieTests.trietest_secureTrie
 
 var trie = new Trie()
 

@@ -1,7 +1,8 @@
 {
-  "name": "merkle-patricia-tree",
+  "name": "@vaporyjs/merkle-patricia-tree",
+  "namespace": "vaporyjs",
   "version": "2.1.2",
-  "description": "This is an implementation of the modified merkle patricia tree as speficed in the Ethereum's yellow paper.",
+  "description": "This is an implementation of the modified merkle patricia tree as speficed in the Vapory's yellow paper.",
   "main": "index.js",
   "scripts": {
     "test": "npm run test:node && npm run test:browser",
@@ -20,33 +21,33 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ethereumjs/merkle-patricia-tree.git"
+    "url": "https://github.com/Vaporyjs/merkle-patricia-tree.git"
   },
   "bugs": {
-    "url": "https://github.com/ethereumjs/merkle-patricia-tree/issues"
+    "url": "https://github.com/Vaporyjs/merkle-patricia-tree/issues"
   },
   "keywords": [
     "merkle",
     "radix",
     "trie",
-    "ethereum"
+    "Vapory"
   ],
   "license": "MPL-2.0",
   "dependencies": {
     "async": "^1.4.2",
-    "ethereumjs-util": "^4.0.0",
+    "vaporyjs-util": "4.0.1",
     "level-ws": "0.0.0",
     "levelup": "^1.2.1",
     "memdown": "^1.0.0",
     "readable-stream": "^2.0.0",
-    "rlp": "^2.0.0",
+    "@vaporyjs/rlp": "2.0.0",
     "semaphore": ">=1.0.1"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
     "coveralls": "^2.11.6",
     "documentation": "^3.0.4",
-    "ethereumjs-testing": "0.0.1",
+    "vaporyjs-testing": "0.0.1",
     "istanbul": "^0.4.1",
     "karma": "^0.13.18",
     "karma-browserify": "^5.0.0",

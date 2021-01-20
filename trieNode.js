@@ -1,5 +1,5 @@
-const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const rlp = require('@vaporyjs/rlp')
+const ethUtil = require('vaporyjs-util')
 
 module.exports = TrieNode
 

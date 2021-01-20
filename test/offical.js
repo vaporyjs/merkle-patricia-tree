@@ -1,7 +1,7 @@
 const Trie = require('../index.js')
 const async = require('async')
 const tape = require('tape')
-const jsonTests = require('ethereumjs-testing').tests.trieTests
+const jsonTests = require('vaporyjs-testing').tests.trieTests
 
 tape('offical tests', function (t) {
   var trie = new Trie()

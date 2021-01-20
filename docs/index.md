@@ -8,7 +8,7 @@ You can create a secure Trie where the keys are automatically hashed using **SHA
 
 [baseTrie.js:26-57](https://github.com/wanderer/merkle-patricia-tree/blob/dc436426d717fed408f4d46fed23f6d26d03d39d/baseTrie.js#L26-L57 "Source code on GitHub")
 
-Use `require('merkel-patricia-tree')` for the base interface. In Ethereum applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+Use `require('merkel-patricia-tree')` for the base interface. In Vapory applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
 
 **Parameters**
 

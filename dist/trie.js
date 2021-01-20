@@ -3,8 +3,8 @@ const assert = require('assert')
 const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
-const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const rlp = require('@vaporyjs/rlp')
+const ethUtil = require('vaporyjs-util')
 const semaphore = require('semaphore')
 const TrieNode = require('./trieNode')
 const ReadStream = require('./readStream')
@@ -16,7 +16,7 @@ const asyncFirstSeries = require('./util').asyncFirstSeries
 module.exports = Trie
 
 /**
- * Use `require('merkel-patricia-tree')` for the base interface. In Ethereum applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+ * Use `require('merkel-patricia-tree')` for the base interface. In Vapory applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
  * @class Trie
  * @param {Object} [db] An instance of [levelup](https://github.com/rvagg/node-levelup/) or a compatible API. If the db is `null` or left undefined, then the trie will be stored in memory via [memdown](https://github.com/rvagg/memdown)
  * @param {Buffer|String} [root]` A hex `String` or `Buffer` for the root of a previously stored trie
@@ -734,7 +734,7 @@ Trie.prototype.checkRoot = function (root, cb) {
   })
 }
 
-},{"./readStream":207,"./trieNode":208,"./util":209,"assert":24,"async":25,"ethereumjs-util":97,"levelup":133,"memdown":138,"rlp":172,"semaphore":189}],2:[function(require,module,exports){
+},{"./readStream":207,"./trieNode":208,"./util":209,"assert":24,"async":25,"vaporyjs-util":97,"levelup":133,"memdown":138,"rlp":172,"semaphore":189}],2:[function(require,module,exports){
 const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
@@ -17915,7 +17915,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.0.2",
-      "/home/null/code/merkle-patricia-tree/node_modules/ethereumjs-util"
+      "/home/null/code/merkle-patricia-tree/node_modules/vaporyjs-util"
     ]
   ],
   "_from": "elliptic@>=6.0.2 <7.0.0",
@@ -17941,13 +17941,13 @@ module.exports={
   "_requiredBy": [
     "/browserify-sign",
     "/create-ecdh",
-    "/ethereumjs-util"
+    "/vaporyjs-util"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.0.2.tgz",
   "_shasum": "219b96cd92aa9885d91d31c1fd42eaa5eb4483a9",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.2",
-  "_where": "/home/null/code/merkle-patricia-tree/node_modules/ethereumjs-util",
+  "_where": "/home/null/code/merkle-patricia-tree/node_modules/vaporyjs-util",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -18450,7 +18450,7 @@ module.exports.create = module.exports.custom.createError
 const SHA3 = require('sha3')
 const secp256k1 = require('secp256k1')
 const assert = require('assert')
-const rlp = require('rlp')
+const rlp = require('@vaporyjs/rlp')
 const BN = require('bn.js')
 const crypto = require('crypto')
 
@@ -18739,7 +18739,7 @@ exports.rlphash = function (a) {
 }
 
 /**
- * Returns the ethereum address of a given public key
+ * Returns the vapory address of a given public key
  * @method pubToAddress
  * @param {Buffer}
  * @return {Buffer}
@@ -18752,7 +18752,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey) {
 }
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the vapory public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey
  * @return {Buffer}
@@ -18764,7 +18764,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the vapory address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey
  * @return {Buffer}
@@ -30151,7 +30151,7 @@ module.exports = ripemd160
 (function (Buffer){
 const assert = require('assert')
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -30195,7 +30195,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/
@@ -38803,8 +38803,8 @@ TrieReadStream.prototype._read = function () {
 
 },{"./trieNode":208,"readable-stream":168,"util":203}],208:[function(require,module,exports){
 (function (Buffer){
-const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const rlp = require('@vaporyjs/rlp')
+const ethUtil = require('vaporyjs-util')
 
 module.exports = TrieNode
 
@@ -39060,7 +39060,7 @@ function isRawNode (node) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":55,"ethereumjs-util":97,"rlp":172}],209:[function(require,module,exports){
+},{"buffer":55,"vaporyjs-util":97,"rlp":172}],209:[function(require,module,exports){
 (function (process){
 const async = require('async')
 

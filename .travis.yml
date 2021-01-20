@@ -34,4 +34,4 @@ matrix:
 script: npm run $TEST_SUITE
 
 notifications:
-  irc: "chat.freenode.net#ethereumjs"
+  irc: "chat.freenode.net#vaporyjs"

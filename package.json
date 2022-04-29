@@ -34,7 +34,7 @@
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^2.6.4",
     "vaporyjs-util": "^5.1.5",
     "level-ws": "0.0.0",
     "levelup": "^1.2.1",
